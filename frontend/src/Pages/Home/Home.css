@@ -1,0 +1,29 @@
+.home-container {
+    display: flex;
+    flex-direction: column-reverse;
+    margin-top: 20px; 
+}
+
+.text-container {
+    padding: 10%;
+    text-align: center;
+}
+
+.welcome {
+    height: 80%;
+    width: 80%;
+    margin-top: 10px;
+    align-self: center;
+    border-radius: 5%;
+}
+
+
+.buttons-container {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+/* ----------------------------------------------------------------------------- */
+
+
