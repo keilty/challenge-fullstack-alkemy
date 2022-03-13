@@ -1,7 +1,10 @@
 import React from 'react'
 import Header from '../../components/Header/Header'
+import CTALogin from '../../components/CTALogin/CTALogin'
+import CTARegister from '../../components/CTARegister/CTARegister'
+import DashboardLink from '../../components/DashboardLink/DashBoardLink'
 import './Home.css'
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 
 const Home = () => {
@@ -20,21 +23,10 @@ const Home = () => {
       </div>
 
       <div className='buttons-container'>
-          <div>
-        <h3>First time here?</h3>
-        <Link to='/register' className=''>
-            <p>Create an account</p>
-        </Link>
-          </div>
-          
-          <div>
-        <h3>Are you registered?</h3>
-        <Link to='/Login' className=''>
-            <p>Login</p>
-        </Link>
-          </div>
-    
+        <CTARegister />
+        <CTALogin />
       </div>
+      <DashboardLink />
 
       </>
     

@@ -1,0 +1,11 @@
+h1 {
+    margin-bottom: 40px;
+}
+
+.form {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    justify-content: center;
+}
