@@ -12,24 +12,21 @@ module.exports = (sequelize, DataTypes) => {
      static associate(models) {
       // define association here
       Transaction.belongsTo(models.Category, {
-        as: {
-          singular: 'category',
-          plural: 'categories'
-        },
+
+        as: 'category',
+        
         foreignKey: 'category_id'
       }),
       Transaction.belongsTo(models.Transaction_type, {
-        as: {
-          singular: 'transactionType',
-          plural: 'transactionTypes'
-        },
+
+        as:'transactionType',
+
         foreignKey: 'transaction_type_id'
       }),
       Transaction.belongsTo(models.User, {
-        as: {
-          singular: 'user',
-          plural: 'users'
-        },
+
+        as:'user',
+
         foreignKey: 'user_id'
       })
     }

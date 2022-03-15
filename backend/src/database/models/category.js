@@ -12,17 +12,15 @@ module.exports = (sequelize, DataTypes) => {
      static associate(models) {
       // define association here
       Category.hasMany(models.Transaction,{
-        as: {
-          singular: 'transaction',
-          plural: 'transactions'
-        },
+
+        as: 'transactions',
+
         foreignKey: 'category_id'
       })
       Category.belongsTo(models.Transaction_type,{
-        as: {
-          singular: 'transactionType',
-          plural: 'transactionTypes'
-        },
+
+        as: 'transactionType',
+        
         foreignKey : 'transaction_type_id'
       })
     }

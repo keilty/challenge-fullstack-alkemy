@@ -12,17 +12,15 @@ module.exports = (sequelize, DataTypes) => {
      static associate(models) {
       // define association here
       User.hasMany(models.Transaction,{
-        as: {
-          singular: 'transaction',
-          plural: 'transaction'
-        },
+
+        as: 'transactions',
+
         foreignKey: 'user_id'
       })
       User.belongsTo(models.Rol,{
-        as: {
-          singular: 'rol',
-          plural: 'rols'
-        },
+
+        as: 'rols',
+        
         foreignKey: 'rol_id'
       })
     }
