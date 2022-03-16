@@ -57,7 +57,7 @@ module.exports = {
             let response = {
                 meta : {
                     status: 200,
-                    url: 'api/categories/'+req.params.id
+                    url: 'api/category/'+req.params.id
                 },
                 data : category
             }
@@ -67,7 +67,7 @@ module.exports = {
             throwError(res, error);
         }
     },
-    transactionTypes : async (req,res) => {
+    transactionType : async (req,res) => {
         try {
 
             let transactionType = await db.Transaction_type.findAll();
@@ -75,35 +75,9 @@ module.exports = {
             let response = {
                 meta : {
                     status: 200,
-                    url: 'api/transaction-types/'
+                    url: 'api/transaction-type/'
                 },
                 data : transactionType
-            }
-
-            return res.status(200).json(response)
-        } catch (error) {
-            throwError(res, error);
-        }
-    },
-    filter: async  (req,res) => {
-        try {
-            let filter = await db.Transaction.findAll({
-                include: [{ all: true }],
-                order: [['id', 'DESC']],
-                where : {
-                    [req.params.transactionType && req.params.category ? Op.and : Op.or]: [
-                        { transaction_type_id: req.params.transactionType ? req.params.transactionType : null }, 
-                        { category_id: req.params.category ? req.params.category : null}
-                    ]
-                }
-            });
-
-            let response = {
-                meta : { 
-                    status: 200,
-                    url: 'api/filter/'+req.params.transactionType+'/'+req.params.category
-                },
-                data : filter
             }
 
             return res.status(200).json(response)

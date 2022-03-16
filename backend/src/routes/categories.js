@@ -1,14 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const {categories, transactionTypes, category, filter} = require('../controllers/categoriesController');
+const {categories, category, transactionType, filter} = require('../controllers/categoriesController');
 
 //Routes
 router
     .get('/categories', categories)
-    .get('/transaction-types', transactionTypes)
-    .get('/categories/:id', category)
-    .get('/filter/:type/:category', filter)
+    .get('/category/:id', category)
+    .get('/transaction-type', transactionType)
 
-
-    
 module.exports = router;
