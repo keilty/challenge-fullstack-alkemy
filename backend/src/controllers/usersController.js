@@ -12,6 +12,11 @@ const throwError = (res, error) => {
     })
 } 
 
+const userError = (res, number, message) => {
+    res.status(number).json({error: message})
+}
+
+
 module.exports = {
     users:  async (req, res) => {
         try {
@@ -93,6 +98,44 @@ module.exports = {
         } catch (error) {
             throwError(res, error);
         }
+    },
+    login: async (req, res) => {
+        try {
+             const { name, password } = req.body;
+
+
+            let user = await db.User.findOne({
+                where : {
+                    name: name,
+                } 
+
+
+            })
+
+            if(await bcrypt.compare(password, user.password)){
+
+                let response = {
+                    meta: {
+                        status: 201,
+                        url: 'api/users/login', 
+                        msg: 'Login succesfully!'  
+                    },
+                    data: user
+    
+                }
+
+                return res.status(201).json(response)
+                
+            } else {
+                userError(res, 400, 'Password incorrect')
+            }
+
+
+
+        } catch (error) {
+            throwError(res, error);
+        }
+        
     },
     update: async (req, res) => {
         try {

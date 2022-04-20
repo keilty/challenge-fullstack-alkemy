@@ -6,6 +6,23 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
 const cors = require('cors')
+const passport = require('passport');
+const flash = require('express-flash');
+
+// const db = require('../database/models');
+// const users = async (req, res) => {
+//   await db.User.findAll();
+// }
+
+// const users = require('./database/models/user')
+
+
+
+// Uncomment this after fix passport-config.js file
+// const initializePassport = require('./passport-config');
+// initializePassport(passport, email => users.find(user => user.email === email)
+// )
+
 
 // Controllers
 const categoriesController = require('./routes/categories');
@@ -13,6 +30,15 @@ const usersController = require('./routes/users');
 const transactionsController = require('./routes/transactions');
 
 const app = express();
+
+// app.use(flash)
+// app.use(session({
+//   secret: process.env.SESSION_SECRET,
+//   resave: false,
+//   saveUninitialized: false
+// }))
+// app.use(passport.initialize())
+// app.use(passport.session())
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -29,6 +55,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api', categoriesController);
 app.use('/api', usersController);
 app.use('/api', transactionsController);
+
+// Passport
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
